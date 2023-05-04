@@ -1,0 +1,109 @@
+=====================================
+STP6_2022309040001_SEED_VC39.0
+Found 72704 unique VCDU counter values
+Found 0 duplicate VCDU counter values
+=====================================
+STP6_2022309050001_SEED_VC39.0
+Found 72704 unique VCDU counter values
+Found 0 duplicate VCDU counter values
+=====================================
+STP6_2022309060001_SEED_VC39.0
+VCDU Counter skips from 8740863 to 8755200
+Found 72704 unique VCDU counter values
+Found 0 duplicate VCDU counter values
+=====================================
+STP6_2022309070001_SEED_VC39.0
+VCDU Counter skips from 8740863 to 8769536
+Found 72704 unique VCDU counter values
+Found 0 duplicate VCDU counter values
+=====================================
+STP6_2022309080001_SEED_VC39.0
+VCDU Counter skips from 8740863 to 8783872
+Found 72704 unique VCDU counter values
+Found 0 duplicate VCDU counter values
+=====================================
+STP6_2022309090002_SEED_VC39.0
+VCDU Counter skips from 8740863 to 8798208
+Found 72704 unique VCDU counter values
+Found 0 duplicate VCDU counter values
+=====================================
+STP6_2022309100002_SEED_VC39.0
+VCDU Counter skips from 8740863 to 8812544
+Found 72704 unique VCDU counter values
+Found 0 duplicate VCDU counter values
+=====================================
+STP6_2022309110002_SEED_VC39.0
+VCDU Counter skips from 8740863 to 8826880
+Found 72704 unique VCDU counter values
+Found 0 duplicate VCDU counter values
+=====================================
+STP6_2022309120002_SEED_VC39.0
+VCDU Counter skips from 8740863 to 8841216
+Found 72704 unique VCDU counter values
+Found 0 duplicate VCDU counter values
+=====================================
+STP6_2022309130002_SEED_VC39.0
+VCDU Counter skips from 8740863 to 8848384
+Found 72704 unique VCDU counter values
+Found 0 duplicate VCDU counter values
+=====================================
+STP6_2022309140001_SEED_VC39.0
+VCDU Counter skips from 8740863 to 8862720
+Found 72704 unique VCDU counter values
+Found 0 duplicate VCDU counter values
+=====================================
+STP6_2022309150001_SEED_VC39.0
+VCDU Counter skips from 8740863 to 8877055
+VCDU Counter skips from 8885615 to 8885617
+Found 72704 unique VCDU counter values
+Found 0 duplicate VCDU counter values
+=====================================
+STP6_2022309160001_SEED_VC39.0
+VCDU Counter skips from 8740863 to 8877056
+VCDU Counter skips from 8884223 to 8898560
+Found 72704 unique VCDU counter values
+Found 0 duplicate VCDU counter values
+=====================================
+STP6_2022309170001_SEED_VC39.0
+VCDU Counter skips from 8740863 to 8877056
+VCDU Counter skips from 8884223 to 8912896
+Found 72704 unique VCDU counter values
+Found 0 duplicate VCDU counter values
+=====================================
+STP6_2022309180002_SEED_VC39.0
+VCDU Counter skips from 8740863 to 8877056
+VCDU Counter skips from 8884223 to 8927232
+Found 72704 unique VCDU counter values
+Found 0 duplicate VCDU counter values
+=====================================
+STP6_2022309190002_SEED_VC39.0
+VCDU Counter skips from 8740863 to 8877056
+VCDU Counter skips from 8884223 to 8941568
+Found 72704 unique VCDU counter values
+Found 0 duplicate VCDU counter values
+=====================================
+STP6_2022309200002_SEED_VC39.0
+VCDU Counter skips from 8740863 to 8878080
+VCDU Counter skips from 8884223 to 8955904
+Found 72704 unique VCDU counter values
+Found 0 duplicate VCDU counter values
+=====================================
+STP6_2022309210002_SEED_VC39.0
+VCDU Counter skips from 8740863 to 8878080
+VCDU Counter skips from 8884223 to 8970240
+Found 72704 unique VCDU counter values
+Found 0 duplicate VCDU counter values
+=====================================
+STP6_2022309220001_SEED_VC39.0
+VCDU Counter skips from 8740863 to 8878080
+VCDU Counter skips from 8884223 to 8970240
+VCDU Counter skips from 8971263 to 8985600
+Found 72704 unique VCDU counter values
+Found 0 duplicate VCDU counter values
+=====================================
+STP6_2022309230001_SEED_VC39.0
+VCDU Counter skips from 8740863 to 8878080
+VCDU Counter skips from 8884223 to 8970240
+VCDU Counter skips from 8971263 to 8999936
+Found 72704 unique VCDU counter values
+Found 0 duplicate VCDU counter values
