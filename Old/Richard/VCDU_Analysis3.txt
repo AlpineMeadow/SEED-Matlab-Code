@@ -1,0 +1,21 @@
+=====================================
+STP6_2022032000002_SEED_VC39.0
+VCDU Counter skips from 2760895 to 2760897
+Found 14335 unique VCDU counter values
+Found 0 duplicate VCDU counter values
+=====================================
+STP6_2022032010001_SEED_VC39.0
+Found 14336 unique VCDU counter values
+Found 0 duplicate VCDU counter values
+=====================================
+STP6_2022032020001_SEED_VC39.0
+Found 14336 unique VCDU counter values
+Found 0 duplicate VCDU counter values
+=====================================
+STP6_2022032030001_SEED_VC39.0
+Found 14336 unique VCDU counter values
+Found 0 duplicate VCDU counter values
+=====================================
+STP6_2022032040001_SEED_VC39.0
+Found 14336 unique VCDU counter values
+Found 0 duplicate VCDU counter values

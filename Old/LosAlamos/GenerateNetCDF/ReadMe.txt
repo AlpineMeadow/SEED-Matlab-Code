@@ -1,0 +1,27 @@
+This directory contains the matlab code used to generate SEED and Dosimeter data
+files for the group down in Los Alamos.
+
+The driver program is : LosAlamosGetSEEDDosimeterData.m
+
+
+The functions called by the driver are :
+
+1. generateLosAlamosInformation.m  ->  This function generates the standard
+information structure.
+
+2.  getLosAlamosDosimeterData ->  This function returns the dosimeter time, the dosimeter counts
+and dosimeter dose arrays.
+
+2a.  LosAlamosSetDosimeterTime -> This function sets the time array into terms of UTC
+seconds from the start of the day.
+
+3.  getLosAlamosSEEDdata ->  This function returns the SEED time and the SEED energy
+spectra.
+
+3a.  LosAlamosSetSEEDTime  ->  This function sets the time array into terms of UTC
+seconds from the start of the day.
+
+4.  getLosAlamosSEEDEnergy ->  This function sets the energy bins.
+
+5.  generateLosAlamosNetcdfFile ->  This function outputs the SEED and Dosimeter data
+to a netcdf file.
