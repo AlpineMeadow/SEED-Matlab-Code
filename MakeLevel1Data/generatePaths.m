@@ -1,0 +1,33 @@
+function Paths = generatePaths(year, dayOfYear)
+
+%Set up some paths using a structure.
+rootPath = '/SS1/STPSat-6/SEED/';
+Paths.rootPath = rootPath;
+Paths.MatlabPath = '/SS1/STPSat-6/MatlabCode/Functions/';
+
+yearStr = num2str(year);
+dayOfYearStr = num2str(dayOfYear, '%03d');
+
+Paths.rawFilesPath = [rootPath, yearStr, '/Raw/DayOfYear_', ...
+    dayOfYearStr, '/'];
+Paths.rawFilesPathSTP6 = [rootPath, yearStr, '/Raw/DayOfYear_', ...
+    dayOfYearStr, '/STP6*'];
+Paths.L0FilesPath = [rootPath, yearStr, '/L0/DayOfYear_', ...
+    dayOfYearStr, '/'];
+Paths.L0FilesPathSTP6 = [rootPath, yearStr, '/L0/DayOfYear_', ...
+    dayOfYearStr, '/STP6*'];
+Paths.L1FilesPath = [rootPath, yearStr, '/L1/DayOfYear_', ...
+    dayOfYearStr, '/'];
+Paths.L1DirPath = [rootPath, yearStr, '/L1/DayOfYear_'];
+Paths.L1FilesPathSTP6 = [rootPath, yearStr, '/L1/DayOfYear_', ...
+    dayOfYearStr, '/STP6*'];
+Paths.L2FilesPath = [rootPath, yearStr, '/L2/DayOfYear_', ...
+    dayOfYearStr, '/'];
+Paths.L0OutputDir = [rootPath, yearStr, '/L0/DayOfYear_', ...
+    dayOfYearStr, '/'];
+Paths.L1OutputDir = [rootPath, yearStr, '/L1/DayOfYear_', ...
+    dayOfYearStr, '/'];
+Paths.L2OutputDir = [rootPath, yearStr, '/L2/DayOfYear_', ...
+    dayOfYearStr, '/'];
+
+end  %End of the function generatePaths.m
