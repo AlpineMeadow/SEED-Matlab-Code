@@ -1,0 +1,138 @@
+function makeSEEDTestTimeSeries(info, flux, time)
+
+%This function is called by FalconSEEDFlux.m
+
+
+%Make a title for the plot as well as the file.
+satellite = "Falcon";
+instrument = "SEED";
+plotType = "TimeSeries";
+plotType1 = "Time Series";
+dateStr = [info.startYearStr, info.startMonthStr, info.startDayOfMonthStr];
+doyStr = info.startDayOfYearStr;
+
+titStr = satellite + " " + instrument + " " + plotType1 + " " + dateStr + ...
+    " " + doyStr;
+saveName = satellite + instrument + plotType + dateStr + "_" + doyStr + ...
+    "_" + num2str(info.numEnergyBinsToSum);
+
+
+fig1FileName = strcat(info.SEEDPlotDir, 'TimeSeries/', saveName, '.png');
+
+fig1 = figure('DefaultAxesFontSize', 12);
+ax = axes();
+fig1.Position = [750 25 1200 500];
+
+
+%Let's find the energy channels of interest.
+energyBins = info.energyBins;
+goodEnergyIndex = find(energyBins(:, 2) >= info.startEnergy & ...
+    energyBins(:, 2) <= info.endEnergy);
+
+%Now we find the times of interest.
+timeInSecondsStart = info.startHour*3600 + info.startMinute*60 + info.startSecond;
+timeInSecondsEnd = info.endHour*3600 + info.endMinute*60 + info.endSecond;
+
+%Get the index of the times to be plotted.
+rawTimeIndex = find(time.rawEventSeconds > timeInSecondsStart & ...
+    time.rawEventSeconds < timeInSecondsEnd);
+rawTimeIndex = rawTimeIndex(1:end - 1);
+
+deltat15TimeIndex = find(time.deltat15EventSeconds > timeInSecondsStart & ...
+    time.deltat15EventSeconds < timeInSecondsEnd);
+deltat15TimeIndex = deltat15TimeIndex(1:end - 1);
+
+
+%Get the flux.
+rawData = log10(flux.rawFluxActual);
+deltat15Data = log10(flux.deltat15FluxActual);
+
+%Plot the square root of the delta time.
+%sqrtRawEventDateNumber = 
+
+%Find the energy bin to plot.
+nominalEnergyBin = 69.6;
+
+energyBinIndex = find(energyBins(:,2) >= nominalEnergyBin);
+%energyBinIndex1 = energyBinIndex(1) - 20;
+%energyBinIndex2 = energyBinIndex(1);
+%energyBinIndex3 = energyBinIndex(1) + 5;
+
+energyBinIndex1 = 6;
+energyBinIndex2 = 17;
+energyBinIndex3 = 65;
+
+energyBinStr1 = ['Energy : ', num2str(energyBins(energyBinIndex1, 2), '%5.2f'), ' keV'];
+energyBinStr2 = ['Energy : ', num2str(energyBins(energyBinIndex2, 2), '%5.2f'), ' keV'];
+energyBinStr3 = ['Energy : ', num2str(energyBins(energyBinIndex3, 2), '%5.2f'), ' keV'];
+
+rawDataStr = 'Raw Data';
+delta15DataStr = 'Delta t = 15 s.';
+rawDataSqrtStr = 'Counts/Square Root of delta t';
+
+%Set the times to be plotted.
+rawTime = time.rawEventSeconds(rawTimeIndex)';
+rawTimeDiff = diff(rawTime);
+rawTimeDiff = [rawTimeDiff(1), rawTimeDiff];
+rawTimeSqrtDiff = rawTimeDiff.^(0.5);
+
+rawDateNum = time.rawEventDateNumber(rawTimeIndex);
+
+deltat15Time = time.deltat15EventSeconds(deltat15TimeIndex);
+deltat15TimeDiff = diff(deltat15Time);
+deltat15TimeDiff = [deltat15TimeDiff(1), deltat15TimeDiff];
+deltat15TimeSqrt = time.deltat15EventSeconds(deltat15TimeIndex).^(0.5);
+deltat15DateNum = time.deltat15EventDateNumber(deltat15TimeIndex);
+
+%Now calculate the flux.
+rawFlux1 = rawData(rawTimeIndex, energyBinIndex1)./rawTimeDiff';
+deltat15Flux1 = deltat15Data(deltat15TimeIndex, energyBinIndex1)./deltat15TimeDiff';
+rawFlux1Sqrt = rawData(rawTimeIndex, energyBinIndex1)./rawTimeSqrtDiff';
+
+rawFlux2 = rawData(rawTimeIndex, energyBinIndex2)./rawTimeDiff';
+deltat15Flux2 = deltat15Data(deltat15TimeIndex, energyBinIndex2)./deltat15TimeDiff';
+rawFlux2Sqrt = rawData(rawTimeIndex, energyBinIndex2)./rawTimeSqrtDiff';
+
+rawFlux3 = rawData(rawTimeIndex, energyBinIndex3)./rawTimeDiff';
+deltat15Flux3 = deltat15Data(deltat15TimeIndex, energyBinIndex3)./deltat15TimeDiff';
+rawFlux3Sqrt = rawData(rawTimeIndex, energyBinIndex3)./rawTimeSqrtDiff';
+
+%Make the plots.
+ sp1 = subplot(3, 1, 1);
+ plot(rawDateNum, rawFlux1, 'b-*', deltat15DateNum, deltat15Flux1, 'g-*', ...
+     rawDateNum, rawFlux1Sqrt, 'r-*')
+ title(titStr);
+ datetick('x', 'HH:MM')
+ text('Units', 'Normalized', 'Position', [0.82, 0.9], 'string', ...
+     		energyBinStr1, 'FontSize', 11, 'Color' , 'black');
+ legend(rawDataStr, delta15DataStr, rawDataSqrtStr, 'Location', 'northwest')
+
+sp2 = subplot(3, 1, 2);
+plot(rawDateNum, rawFlux2, 'b-*', deltat15DateNum, deltat15Flux2, 'g-*', ...
+    rawDateNum, rawFlux2Sqrt, 'r-*')
+ylabel('Log_{10} Counts/s')
+title(titStr)
+%ylim([0 200])
+datetick('x', 'HH:MM')
+text('Units', 'Normalized', 'Position', [0.82, 0.9], 'string', ...
+    		energyBinStr2, 'FontSize', 11, 'Color' , 'black');
+legend(rawDataStr, delta15DataStr, rawDataSqrtStr, 'Location', 'northwest')
+
+
+sp3 = subplot(3, 1, 3);
+plot(rawDateNum, rawFlux3, 'b-*', deltat15DateNum, deltat15Flux3, 'g-*', ...
+    rawDateNum, rawFlux3Sqrt, 'r-*')
+datetick('x', 'HH:MM')
+text('Units', 'Normalized', 'Position', [0.82, 0.9], 'string', ...
+    		energyBinStr3, 'FontSize', 11, 'Color' , 'black');
+legend(rawDataStr, delta15DataStr, rawDataSqrtStr, 'Location', 'northwest')
+
+
+
+
+
+%Save the spectra to a file.
+saveas(fig1, fig1FileName);
+
+
+end  %End of function makeSEEDTestTimeSeries.m
