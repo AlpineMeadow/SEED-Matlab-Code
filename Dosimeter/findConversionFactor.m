@@ -25,14 +25,16 @@ function newChannel1CountsToRads = findConversionFactor(countDifferenceChannel1,
 %cause a rollover.  The mean of the distribution of those counts gives the
 %value around which to calculate the calibration factor.
 
+%This function is called by getDosimeterDose.m.
+
 
 %First find the indices where the count difference goes negative.
 rolloverPlusResetIndex = find(countDifferenceChannel1 < 0);
 
 %Find the indices from the rollover index that correspond to rollover events
 %as compared to the reset events.
-rolloverIndex = find(countDifferenceChannel1(rolloverPlusResetIndex) < info.minimumDiffValue);
-
+%rolloverIndex = find(countDifferenceChannel1(rolloverPlusResetIndex) < info.minimumDiffValue);
+rolloverIndex = find(countDifferenceChannel1(rolloverPlusResetIndex) < 1);
 %Now just create a new index that contains the points that are believed to
 %be rollover events.
 validRolloverIndex = rolloverPlusResetIndex(rolloverIndex);
@@ -112,7 +114,7 @@ stdRolloverCounts = pd.sigma;
 %Create some strings to plotted.
 averageRolloverCountsStr = ['Average Rollover Counts : ', ...
 	num2str(averageRolloverCounts, '%6.2f')];
-stdRolloverCountsStr = ['Stardard Deviation of Rollover Counts : ', ...
+stdRolloverCountsStr = ['Standard Deviation of Rollover Counts : ', ...
 	num2str(stdRolloverCounts, '%6.3f')];
 
 %Here we generate the old and new conversion factors.

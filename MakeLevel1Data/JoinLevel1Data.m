@@ -1,0 +1,74 @@
+%This script will combine the the various level 1 (L1) files for a given
+%day of year and output CDF data files for the combined SEED data, the
+%combined dosimeter data and the combined temperature data.
+
+dbstop if error;
+
+clearvars;
+close all;
+fclose('all');
+
+%Set the day of year and the year.
+startDayOfYear = 246;
+endDayOfYear = 256;
+startYear = 2025;
+endYear = 2025;
+
+%Set up a starting time and ending time for the data analysis.
+startHour = 0;
+startMinute = 0;
+startSecond = 0.0;
+endHour = 23;
+endMinute = 59;
+endSecond = 59.0;
+
+%We need to generate a variable that will contain the data version number
+%for the CDF files.  This will be used for this program but not in others
+%that use the info structure.  
+CDFDataVersionNumber = 1;
+
+%The energy bin number at which to start the data analysis. This will give
+%904 energy bins, which is the number of bins in the CDF file.
+startEnergyBinNumber = 121;  
+
+%The number of energy bins to sum.
+numEnergyBinsToSum = 1;  
+
+%The number of time bins to sum. This needs to remain set to 1.
+numTimeBinsToSum = 1;  
+
+%We will skip time steps in the makeLineSpectraMovie function.  Let us
+%decide how many steps to skip.
+numTimeStepsToSkip = 1;
+
+%Pick the energy range of interest.  The values will be in keV.
+startEnergy = 20.0;
+endEnergy = 150.0;
+
+%Create a flag that tell the plotting program whether or not to plot the
+%sector boundaries.
+plotSectorBoundaries = 0;
+
+%Generate a structure that holds all of the information needed to do the
+%analysis.
+instrument = 'SEED';
+info = generateInformationStructure(instrument, startDayOfYear, ...
+    startYear, startHour, startMinute, startSecond, endDayOfYear, ...
+    endYear, endHour, endMinute, endSecond, startEnergyBinNumber, ...
+    startEnergy, endEnergy, numEnergyBinsToSum, numTimeBinsToSum, ...
+    numTimeStepsToSkip, CDFDataVersionNumber);
+
+%Loop through the mission day of years.
+for missionDayIndex = info.startMissionDayNumber : info.endMissionDayNumber
+
+    %Convert mission day number to year and day of year.
+    [dayOfYear, year] = MDNToDN(missionDayIndex);
+    disp(['Year : ', num2str(year), ' Day of Year : ', ...
+        num2str(dayOfYear, '%03d'), ' Mission Day Number : ', ...
+    num2str(missionDayIndex)])
+
+    %Open the files and combine the data into one single file.
+    combineData(info, missionDayIndex);
+end
+
+disp('Now run SEEDCDFSummaryPlots to generate the summary plots for these data.')

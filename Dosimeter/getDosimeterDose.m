@@ -9,7 +9,7 @@ function dosePerDay = getDosimeterDose(info, rawTime, rawDose, xvalues, xdays)
 
 %Lets make a histogram and plot of the time values.
 %dosimeterDoseTimeHistogram(info, rawTime, xvalues, xdays)
-dosimeterDoseTimeSeries(info, rawTime, xvalues, xdays, rawDose);
+%dosimeterDoseTimeSeries(info, rawTime, xvalues, xdays, rawDose);
 
 %Now find the difference between the rows.
 orderOfDifference = 1;  %This will always be what we want.
@@ -20,7 +20,7 @@ countDifferenceChannel3 = diff(rawDose(:, 3), orderOfDifference, arrayDimension)
 countDifferenceChannel4 = diff(rawDose(:, 4), orderOfDifference, arrayDimension);
 
 %Find the conversion factor between counts and dose.			
-%newChannel1CountsToRads = findConversionFactor(countDifferenceChannel1, info);
+newChannel1CountsToRads = findConversionFactor(countDifferenceChannel1, info);
 
 %We need to prepend the original first row to the new array.
 countsChannel1 = [rawDose(1, 1); countDifferenceChannel1];

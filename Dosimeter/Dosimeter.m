@@ -34,11 +34,35 @@ dosimeterChannels = [1, 2, 3, 4];
 %"month" or "year".
 plotType = 'year';
 
+%the energy bin number at which to start the data analysis. 
+startEnergyBinNumber = 120;  
+
+%The number of energy bins to sum.
+numEnergyBinsToSum = 10;
+
+%The number of time bins to sum. This needs to remain set to 1.
+numTimeBinsToSum = 1;  
+
+%We will skip time steps in the makeLineSpectraMovie function.  Let us
+%decide how many steps to skip.
+numTimeStepsToSkip = 1;
+
+%Pick the energy range of interest.  The values will be in keV.
+startEnergy = 20.0;
+endEnergy = 150.0;
+
+%Set the CDF version number.
+CDFDataVersionNumber = 1;
 %Generate a structure that holds all of the information needed to do the
 %analysis.
-info = generateDosimeterInformation(startDayOfYear, startYear, ...
-    endDayOfYear, endYear, startHour, startMinute, startSecond, ...
-        endHour, endMinute, endSecond, dosimeterChannels);
+%info = generateDosimeterInformation(startDayOfYear, startYear, ...
+%    endDayOfYear, endYear, startHour, startMinute, startSecond, ...
+%        endHour, endMinute, endSecond, dosimeterChannels);
+info = generateInformationStructure(instrument, startDayOfYear, ...
+    startYear, startHour, startMinute, startSecond, endDayOfYear, ...
+    endYear, endHour, endMinute, endSecond, startEnergyBinNumber, ...
+    startEnergy, endEnergy, numEnergyBinsToSum, numTimeBinsToSum, ...
+    numTimeStepsToSkip, CDFDataVersionNumber);
 
 %Get the dosimeter data.
 [rawTime, rawDose, xvalues, xdays] = getDosimeterData(info);
